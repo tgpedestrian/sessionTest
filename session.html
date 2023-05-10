@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Session- Test</title>
+  </head>
+  <body>
+    <!-- local -->
+
+    <h2>sessionStorage</h2>
+
+    <form>
+      <div class="login">
+        <p>Account : <input id="account" type="text" placeholder="abc123" /></p>
+        <p>
+          Password : <input id="password" type="text" placeholder="god456" />
+        </p>
+        <button id="btn" type="button">送出</button>
+      </div>
+    </form>
+    <div>
+      <button type="button" id="btnShow">btnShow</button>
+      <p id="getAcc"></p>
+      <p id="getPwdd"></p>
+      <p id="getImformationID"></p>
+    </div>
+
+    <div>
+      <a href="./index.html">跳轉到localStorage</a>
+    </div>
+
+    <script>
+      sessionStorage.setItem("key", "value");
+      const account = document.querySelector("#account");
+      const password = document.querySelector("#password");
+      const btn = document.querySelector("#btn");
+      const btnShow = document.querySelector("#btnShow");
+
+      btn.addEventListener("click", function () {
+        const accountNew = account.value;
+        const passwordNew = password.value;
+        const imformation = { account: accountNew, password: passwordNew };
+
+        sessionStorage.setItem("accountNew", accountNew);
+        sessionStorage.setItem("passwordNew", passwordNew);
+        localStorage.setItem("imformation", JSON.stringify(imformation));
+        console.log(passwordNew);
+        console.log(accountNew);
+      });
+
+      btnShow.addEventListener("click", function () {
+        const getAccount = sessionStorage.getItem("accountNew");
+        const getPwd = sessionStorage.getItem("passwordNew");
+        const getImformation = localStorage.getItem("imformation");
+        getAcc.innerText = getAccount;
+        getPwdd.innerText = getPwd;
+        getImformationID.innerText = getImformation;
+      });
+    </script>
+  </body>
+</html>
